@@ -5,23 +5,6 @@
 
 ****    USE python 2.7 because tkinter is not installed for 3    ****
 
-To create an app from this script
-
-Open Automator
-
-Choose "Application"
-
-Drag a "Run Shell Script" onto the workflow panel
-
-Choose "/usr/bin/python" as the shell. Paste in your script, and select Pass Input: "to stdin"
-
-Or, choose bash as the shell, and simply have the automator script run your Python script with Pass Input "as arguments" selected on the top right. You'll then use the contents of $@ as your arguments.
-
-Save the application.
-
-Done. You have a .app onto which files can be dragged.
-
-
 """
 
 from bs4 import BeautifulSoup
