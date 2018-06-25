@@ -5,6 +5,8 @@
 
 ****    USE python 2.7 because tkinter is not installed for 3    ****
 
+To create an app from this script
+
 Open Automator
 
 Choose "Application"
@@ -96,7 +98,7 @@ class getLyrics:
 		#time, so skipped songs must be tracked in getKashi.
 		#The python script will just return nothing
 		#***********************************************
-		if self.results != None:
+		if len(self.results) > 0:
 
 			#If there is only one result then just use those lyrics, no need to confirm
 			if len(self.results) == 1:
@@ -118,7 +120,7 @@ class getLyrics:
 
 				#self.displayLyrics(self.results)
 
-				print self.results
+				print self.results.strip()
 
 			#there is more than one result, ask which is correct
 			else:
@@ -142,7 +144,7 @@ class getLyrics:
 				#Grab lyrics from result page and remove html tags
 				self.results = self.data.find("div", {"class": "lyricBody"}).text.encode('utf-8')
 
-				print self.results
+				print self.results.strip()
 				
 
 
