@@ -20,9 +20,9 @@ The following Python modules are required to run the app:
 * Copy and paste the AppleScript code. 
   *  **_If you wish to store the python script in a different location from the App you must comment out line 38 and change the path to the python script to the path where you wish to store it like so:_**
 
-```set pyScript to "full/path/to\\ script/getLyrics.py "```
+  ```set pyScript to "full/path/to\\ script/getLyrics.py "```
 
-_Any spaces in the path must be preceded with two backslashes._
+  _Any spaces in the path must be preceded with two backslashes._
 
 * Save the application and it will create a .app which can be added to the dock.
 
