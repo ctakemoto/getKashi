@@ -29,7 +29,7 @@ on run
 	--if itunes is running
 	if num > 0 then
 		set lyricsSet to 0
-		set info to "This is a test~"
+		
 		--create a string to store the skipped song titles
 		set skipped to "Couldn't find lyrics for:" & return as string
 		--get parent directory of where the current script sits
@@ -57,7 +57,7 @@ on run
 				set songInfo to my replaceText("~", "puncTilda", songInfo)
 				
 				--call python script to get lyrics
-				set info to do shell script "python " & pyScript & songInfo
+				set info to do shell script "/usr/local/bin/python " & pyScript & songInfo
 				
 				--check to see if script found lyrics, if it didn't then will return
 				--an empty string

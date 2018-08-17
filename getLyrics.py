@@ -1,5 +1,5 @@
 
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 """#!/usr/bin/env python
 
@@ -49,7 +49,6 @@ class getLyrics:
 				ErrorMessage += str(i) + " " + str(sys.argv[i])+ "\n"
 			tkMessageBox.showerror("Error", ErrorMessage)
 
-
 		self.searchLyrics()
 
 		
@@ -68,7 +67,7 @@ class getLyrics:
 
 		#gets raw text from the url in query and makes it readable by BeautifulSoup
 		#if the encoding isn't specified then the Japanese characters will get scrambled
-		self.data = BeautifulSoup(r.text.encode(r.encoding), from_encoding="utf-8")
+		self.data = BeautifulSoup(r.text.encode(r.encoding), from_encoding="utf-8", features="html.parser")
 
 		#check result types
 		#find all p elements that hold the search results
@@ -95,7 +94,7 @@ class getLyrics:
 
 				#gets raw text from the url in query and makes it readable by BeautifulSoup
 				#if you don't specify the encoding then the japanese characters will get scrambled
-				self.data = BeautifulSoup(r.text.encode(r.encoding), from_encoding="utf-8")
+				self.data = BeautifulSoup(r.text.encode(r.encoding), from_encoding="utf-8", features="html.parser")
 
 				#Grab lyrics from result page
 				#adding encode utf-8 tag here fixes ascii out of range error
@@ -121,13 +120,17 @@ class getLyrics:
 
 				#gets raw text from the url in query and makes it readable by BeautifulSoup
 				#if you don't specify the encoding then the japanese characters will get scrambled
-				self.data = BeautifulSoup(r.text.encode(r.encoding), from_encoding="utf-8")
+				self.data = BeautifulSoup(r.text.encode(r.encoding), from_encoding="utf-8", features="html.parser")
 
 
 				#Grab lyrics from result page and remove html tags
 				self.results = self.data.find("div", {"class": "lyricBody"}).text.encode('utf-8')
 
 				print self.results.strip()
+		#else:
+		#getKashi script looks for an empty string when no results are found
+		#only need this part with running this python script separately
+		#	print "No results found"
 				
 
 
@@ -181,6 +184,6 @@ class getLyrics:
 		self.master.mainloop()
 
 		
-
-lyrics = getLyrics(sys.argv)
-
+if __name__ == "__main__":
+	lyrics = getLyrics(sys.argv)
+	

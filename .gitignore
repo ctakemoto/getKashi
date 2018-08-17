@@ -1,3 +1,13 @@
 
 *.icns
 .DS_Store
+getKashi.app/Contents/document.wflow
+getKashi.app/Contents/Info.plist
+getKashi.app/Contents/MacOS/Application Stub
+getKashi.app/Icon
+getKashi.app/Icon
+test.py
+test.pyc
+test.scpt
+getKashi.app/Icon
+getKashi.app/Icon
