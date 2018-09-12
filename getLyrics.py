@@ -96,13 +96,24 @@ class getLyrics:
 				#if you don't specify the encoding then the japanese characters will get scrambled
 				self.data = BeautifulSoup(r.text.encode(r.encoding), from_encoding="utf-8", features="html.parser")
 
+
 				#Grab lyrics from result page
-				#adding encode utf-8 tag here fixes ascii out of range error
-				self.results = self.data.find("div", {"class": "lyricBody"}).text.encode('utf-8')
 
-				#self.displayLyrics(self.results)
+				#check if the lyrics exist on the page, some new songs have a page but no lyrics yet,
+				#just a button for visiters to press and express anticipation
+				
+				#self.results = self.data.find("div", {"class": "lyricBody"}).text.encode('utf-8')
+				self.results = self.data.find("div", {"class": "lyricBody"})
 
-				print self.results.strip()
+				if self.results != None:
+					#adding encode utf-8 tag here fixes ascii out of range error
+					self.results = self.results.text.encode('utf-8')
+
+					#self.displayLyrics(self.results)
+					print self.results.strip()
+
+
+				
 
 			#there is more than one result, ask which is correct
 			else:
@@ -124,9 +135,13 @@ class getLyrics:
 
 
 				#Grab lyrics from result page and remove html tags
-				self.results = self.data.find("div", {"class": "lyricBody"}).text.encode('utf-8')
+				self.results = self.data.find("div", {"class": "lyricBody"})
 
-				print self.results.strip()
+				if self.results != None:
+					#adding encode utf-8 tag here fixes ascii out of range error
+					self.results = self.results.text.encode('utf-8')
+
+					print self.results.strip()
 		#else:
 		#getKashi script looks for an empty string when no results are found
 		#only need this part with running this python script separately
